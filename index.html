@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siempre te voy a querer</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 120, 170, 0.35), transparent 28%),
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.16), transparent 30%),
+        linear-gradient(145deg, #110611, #2b0c22 42%, #7a1d3d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart-float {
+      position: absolute;
+      bottom: -60px;
+      font-size: 22px;
+      opacity: 0.55;
+      animation: floatUp linear infinite;
+    }
+
+    .heart-float:nth-child(1) { left: 8%; animation-duration: 8s; animation-delay: 0s; }
+    .heart-float:nth-child(2) { left: 24%; animation-duration: 11s; animation-delay: 2s; }
+    .heart-float:nth-child(3) { left: 45%; animation-duration: 9s; animation-delay: 1s; }
+    .heart-float:nth-child(4) { left: 67%; animation-duration: 12s; animation-delay: 3s; }
+    .heart-float:nth-child(5) { left: 86%; animation-duration: 10s; animation-delay: 1.5s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+      12% { opacity: 0.6; }
+      100% { transform: translateY(-115vh) scale(1.35) rotate(25deg); opacity: 0; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 32px;
+      padding: 34px 24px 28px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(14px);
+      animation: appear 1.1s ease-out both;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(18px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .main-heart {
+      font-size: 64px;
+      margin-bottom: 12px;
+      animation: beat 1.35s infinite;
+      filter: drop-shadow(0 0 20px rgba(255,255,255,0.25));
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      30% { transform: scale(1.1); }
+      50% { transform: scale(0.98); }
+      75% { transform: scale(1.06); }
+    }
+
+    .intro {
+      min-height: 28px;
+      font-size: 18px;
+      opacity: 0.92;
+      margin: 0 0 14px;
+      letter-spacing: 0.2px;
+    }
+
+    h1 {
+      margin: 8px 0 14px;
+      font-size: 31px;
+      line-height: 1.12;
+    }
+
+    .message {
+      font-size: 17px;
+      line-height: 1.55;
+      opacity: 0.96;
+      margin: 0 0 22px;
+    }
+
+    .photo-frame {
+      display: none;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.15);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .song-box {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 22px;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    .song-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .artist {
+      font-size: 14px;
+      opacity: 0.86;
+    }
+
+    .button {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #8b1e42;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.30);
+    }
+
+    .button:active { transform: scale(0.98); }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 15px;
+      opacity: 0.86;
+      line-height: 1.45;
+    }
+
+    .small {
+      margin-top: 12px;
+      font-size: 13px;
+      opacity: 0.68;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <span class="heart-float">❤️</span>
+    <span class="heart-float">💕</span>
+    <span class="heart-float">❤️</span>
+    <span class="heart-float">💖</span>
+    <span class="heart-float">💕</span>
+  </div>
+
+  <main class="card">
+    <div class="main-heart">❤️</div>
+    <p class="intro" id="intro"></p>
+
+    <h1>Para la mujer que más quiero</h1>
+
+    <p class="message">
+      Cada vez que escuches esta canción, acuérdate de nosotros,
+      de todo lo que hemos vivido y de todo lo bonito que todavía nos queda.
+    </p>
+
+    <!-- Para poner una foto vuestra:
+         1) sube una imagen llamada foto.jpg a la misma carpeta
+         2) cambia display:none por display:block en .photo-frame del CSS -->
+    <div class="photo-frame">
+      <img src="foto.jpg" alt="Nuestra foto">
+    </div>
+
+    <section class="song-box">
+      <div class="song-title">Siempre te voy a querer</div>
+      <div class="artist">Jhon Onofre</div>
+    </section>
+
+    <a class="button" href="https://youtu.be/NoD8RIEz-fs">
+      ▶️ Escuchar nuestra canción
+    </a>
+
+    <p class="footer">
+      Esto no es solo una canción.<br>
+      Es una forma de decirte que siempre te voy a querer.
+    </p>
+
+    <div class="small">Hecho con amor para ti</div>
+  </main>
+
+  <script>
+    const text = "Tengo algo para ti...";
+    const intro = document.getElementById("intro");
+    let i = 0;
+
+    function typeText() {
+      if (i <= text.length) {
+        intro.textContent = text.slice(0, i);
+        i++;
+        setTimeout(typeText, 85);
+      }
+    }
+
+    setTimeout(typeText, 500);
+  </script>
+</body>
+</html>
